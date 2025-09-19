@@ -72,15 +72,21 @@ git add .
 ```zsh
 git commit -m "Commit Message"
 
-git commit
+git commit --amend
+
+git commit --amend -m "Commit message"
 ```
 
-`git commit`을 CLI에 입력하고 나면, vi 편집기를 사용한 편집모드에 들어가게 된다.
+`-m` 옵션은 커밋에 이름을 적어주는 옵션<br>
+`--amend` 옵션은 현재 커밋 내용을 제일 최근 커밋과 합치는 것.
+
 
 ### Log
 
 ```zsh
 git log
+
+git log --oneline #주로 사용, 로그를 한 줄로 볼 수 있음.
 ```
 
 과거 버전을 확인할 수 있습니다.
@@ -93,17 +99,6 @@ git branch
 
 로컬에서 사용 중인 브랜치를 확인하는 명령어
 
-```zsh
-git branch --remote
-```
-
-원격 레포지토리에서 사용 중인 브랜치를 확인하는 명령어
-
-```zsh
-git branch "New Branch Name"
-```
-
-"New Branch Name"이라는 이름의 브랜치 개설하는 명령어
 
 ### Checkout
 
@@ -114,18 +109,11 @@ git checkout "Branch Name"
 - "Branch Name"의 브랜치로 이동하는 명령어
 
 ```zsh
-git checkout -b "New Branch Name"
+git checkout -b "New Branch Name" # 이 방법으로 브랜치 개설을 추천
 ```
 
 - 새로운 브랜치 "New Branch Name"으로 개설하면서 이동하는 명령어
 
-### Remote
-
-```zsh
-git remote --v
-```
-
-`.git` 파일이 있는 디렉터리가 어떤 원격 레포지토리에 연결되어있는지 확인하는 명령어
 
 ### Push
 
@@ -133,7 +121,7 @@ git remote --v
 git push origin
 ```
 
-`origin` 원격 레포지토리로 업로드
+커밋한 내용을 `origin` 원격 레포지토리로 업로드
 
 ### Pull
 
@@ -162,17 +150,18 @@ git merge "Branch B"
 ```zsh
 git checkout D
 
-git push origin
+git push origin D
 ```
+<br>
 
 - GitHub Pull Request에서 PR을 개설합니다.
-- C 브랜치에 병합합니다. 이 때 병합은 원격 레포지토리의 C 브랜치(origin/c)에 병합이 되어 있습니다.
+- C 브랜치에 병합합니다. 이 때 병합은 원격 레포지토리의 C 브랜치(origin/c)에 병합이 진행됩니다.
 - 변경된 origin/c 브랜치의 변경 사항을 로컬로 `pull` 받아옵니다.
 
 ```zsh
 git checkout C
 
-git pull origin
+git pull origin C
 ```
 
 ## Advanced Skills
@@ -181,6 +170,8 @@ git pull origin
 
 ```zsh
 git push -d "Remote Name" "Branch Name"
+
+git push -d origin feat/#55
 ```
 
 원격에 브랜치를 푸시가 되어있는 상황에서, 푸시를 제거하고 싶을 때 수행하는 명령어입니다.
@@ -221,38 +212,21 @@ git stash
 작업 중인 항목들을 임시저장합니다.
 
 ```zsh
-git stash push -m "임시저장 타이틀"
-```
-
-작업 중인 항목들을 임시저장하는데, 임시저장 타이틀을 지정할 수 있습니다.
-
-```zsh
 git stash list
 ```
 
 임시저장된 변경사항들의 리스트를 보여줍니다.
 
 ```zsh
-git stash apply stash@{항목번호}
+git stash pop
 ```
+
+stash는 스택으로 관리가 됩니다. <br>
+가장 최근에 stash한 작업 내용이 불러와집니다.
+
 
 임시저장된 항목 중 하나를 선택하여 저장합니다.
 
-### Amend
-
-> `git amend` 명령어는 가장 최근의 커밋 메시지를 수정합니다.
-
-```zsh
-git commit --amend
-```
-
-가장 최근 커밋 메시지를 수정하는 vi 모드로 진입합니다.
-
-```zsh
-git commit --amend --no-edit
-```
-
-커밋 메시지 수정 없이, 현재 stage한 항목을 이전 커밋에 넣습니다.
 
 ### HEAD
 
@@ -263,6 +237,9 @@ HEAD의 개념
 ### Checkout into Hash
 
 ```zsh
+git log --onelist # 기존 커밋들의 리스트가 나열됨. 이때 커밋의 해시값을 확인.
+
+
 git commit checkout "commit hash"
 ```
 
