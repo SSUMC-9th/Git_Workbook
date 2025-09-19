@@ -4,7 +4,7 @@ echo "1. week1.md 파일을 생성해주세요!"
 echo "2. markdown 문법을 이용해 1주차에 배운 내용을 week1.md 파일에 정리해주세요!"
 echo "3. ignore.md 파일을 생성한 뒤 아무 내용이나 작성해주세요!"
 echo "4. gitignore 파일을 생성해 ignore.md 파일을 추적 해제하도록 설정해주세요!"
-echo "5. 모든 파일을 add하는 명령어를 사용해 add한 후, commit해 주세요!"
+echo "5. 모든 파일을 add하는 명령어를 사용해 add한 후, commit해 주세요!"'
 echo "6. (명령어)를 사용해 위의 내용을 올바르게 실습했는지 확인해주세요!"
 echo "7. \"모든 과제가 확인되었습니다\"라는 메시지를 확인하셨다면, 캡쳐하신 후 week1 브랜치를 push해주세요!"
 echo "8. 양식에 맞춰 Pull Request를 작성해주세요!"
